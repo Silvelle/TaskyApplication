@@ -6,20 +6,20 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
-import com.example.taskyapplication.data.local.entity.Note
+import com.example.taskyapplication.data.local.entity.NoteEntity
 import kotlinx.coroutines.flow.Flow
 
 
 @Dao
 interface NoteDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insert(note: Note)
+    suspend fun insert(noteEntity: NoteEntity)
     @Update
-    suspend fun update(note: Note)
+    suspend fun update(noteEntity: NoteEntity)
     @Delete
-    suspend fun delete(note: Note)
+    suspend fun delete(noteEntity: NoteEntity)
     @Query("SELECT * from notes WHERE id = :id")
-    fun getItem(id: String): Flow<Note>
-    @Query("SELECT * from notes ORDER BY createAt DESC")
-    fun getAllItems(): Flow<Flow<Note>>
+    fun getNote(id: Long): Flow<NoteEntity?>
+    @Query("SELECT * from notes ORDER BY createdAt DESC")
+    fun getAllNotes(): Flow<List<NoteEntity>>
 }

@@ -68,4 +68,8 @@ dependencies {
     testImplementation("androidx.room:room-testing:${room_version}")
 // optional - Paging 3 Integration
     implementation("androidx.room:room-paging:${room_version}")
+
+    var lifecycle_version = "2.11.0"
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:${lifecycle_version}")
+    implementation("androidx.lifecycle:lifecycle-runtime-compose:${lifecycle_version}")
 }
