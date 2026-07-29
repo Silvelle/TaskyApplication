@@ -17,10 +17,29 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.CalendarMonth
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Note
+import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.Propane
+import androidx.compose.material.icons.filled.Task
+import androidx.compose.material.icons.outlined.CalendarMonth
+import androidx.compose.material.icons.outlined.Home
+import androidx.compose.material.icons.outlined.Note
+import androidx.compose.material.icons.outlined.Person
+import androidx.compose.material.icons.outlined.Task
 import androidx.compose.material3.Scaffold
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.ImageVector
+import com.example.taskyapplication.presentation.navigation.BottomNavigationBar
+import com.example.taskyapplication.presentation.navigation.Home
 import com.example.taskyapplication.presentation.notes.DisplayScreen
 import com.example.taskyapplication.presentation.ui.theme.TaskyApplicationTheme
+
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,13 +47,24 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             TaskyApplicationTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                Scaffold(
+                    modifier = Modifier.fillMaxSize(),
+                    bottomBar = {
+                        BottomNavigationBar(
+                            selectedKey = Home,
+                            onSelectKey = {
+                                // TODO
+                            }
+                        )
+                    }
+                ) { innerPadding ->
                     DatabaseTestScreen(modifier = Modifier.padding(innerPadding))
                 }
             }
         }
     }
 }
+
 @Composable
 fun DatabaseTestScreen(modifier: Modifier = Modifier) {
     val context = LocalContext.current.applicationContext

@@ -1,4 +1,4 @@
-package com.example.taskyapplication.data.local.repository
+package com.example.taskyapplication.data.repository
 
 import com.example.taskyapplication.data.local.dao.NoteDao
 import com.example.taskyapplication.data.local.entity.NoteEntity

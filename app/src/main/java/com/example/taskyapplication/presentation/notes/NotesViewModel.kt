@@ -40,6 +40,11 @@ class NotesViewModel (
             notesRepository.insertNote(note)
         }
     }
+    fun deleteNote(note: Note) {
+        viewModelScope.launch {
+            notesRepository.deleteNote(note)
+        }
+    }
 }
 
 

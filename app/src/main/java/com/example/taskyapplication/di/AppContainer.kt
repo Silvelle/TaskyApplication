@@ -2,7 +2,7 @@ package com.example.taskyapplication.di
 
 import android.content.Context
 import com.example.taskyapplication.data.local.database.NoteDatabase
-import com.example.taskyapplication.data.local.repository.NotesRepositoryImpl
+import com.example.taskyapplication.data.repository.NotesRepositoryImpl
 import com.example.taskyapplication.domain.repository.NotesRepository
 
 interface AppContainer {
