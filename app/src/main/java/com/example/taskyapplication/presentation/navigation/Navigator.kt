@@ -16,7 +16,7 @@ class Navigator(
     fun goBack() {
         when (state.currentKey) {
             state.StartRoute -> error("Can't go back from starting point")
-            in state.topLevelRoute -> {
+            in state.topLevelKeys -> {
                 state.topLevelRoute.removeLastOrNull()
             }
 

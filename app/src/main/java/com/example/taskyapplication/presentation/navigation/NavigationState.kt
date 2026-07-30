@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.runtime.toMutableStateList
@@ -38,11 +39,13 @@ fun rememberNavigationState(
 ): NavigationState {
     val topLevelRoute = rememberNavBackStack(startKey)
     val subStacks = topLevelKeys.associateWith { key -> rememberNavBackStack(key) }
-    return NavigationState(
-        StartRoute = startKey,
-        topLevelRoute = topLevelRoute,
-        subStacks = subStacks,
-    )
+    return remember(startKey, topLevelKeys) {
+        NavigationState(
+            StartRoute = startKey,
+            topLevelRoute = topLevelRoute,
+            subStacks = subStacks,
+        )
+    }
 }
 
 @Composable
@@ -64,4 +67,5 @@ fun NavigationState.toEntries(
         .flatMap { key -> decoratedEntries[key] ?: emptyList() }
         .toMutableStateList()
 }
+
 

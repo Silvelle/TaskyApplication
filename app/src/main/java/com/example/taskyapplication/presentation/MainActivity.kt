@@ -37,7 +37,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.example.taskyapplication.presentation.navigation.BottomNavigationBar
 import com.example.taskyapplication.presentation.navigation.Home
-import com.example.taskyapplication.presentation.notes.DisplayScreen
 import com.example.taskyapplication.presentation.ui.theme.TaskyApplicationTheme
 
 
@@ -47,83 +46,6 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             TaskyApplicationTheme {
-                Scaffold(
-                    modifier = Modifier.fillMaxSize(),
-                    bottomBar = {
-                        BottomNavigationBar(
-                            selectedKey = Home,
-                            onSelectKey = {
-                                // TODO
-                            }
-                        )
-                    }
-                ) { innerPadding ->
-                    DatabaseTestScreen(modifier = Modifier.padding(innerPadding))
-                }
-            }
-        }
-    }
-}
-
-@Composable
-fun DatabaseTestScreen(modifier: Modifier = Modifier) {
-    val context = LocalContext.current.applicationContext
-    val scope = rememberCoroutineScope()
-
-    val database = remember {
-        NoteDatabase.getDataBase(context)
-    }
-
-    val notes by database.noteDao()
-        .getAllNotes()
-        .collectAsState(initial = emptyList())
-
-    Column(
-        modifier = modifier.padding(16.dp),
-        verticalArrangement = Arrangement.spacedBy(12.dp)
-    ) {
-        Button(
-            onClick = {
-                scope.launch {
-                    val currentTime = System.currentTimeMillis()
-
-                    database.noteDao().insert(
-                        NoteEntity(
-                            title = "Test note",
-                            content = "Inserted at $currentTime",
-                            createdAt = currentTime,
-                            updatedAt = currentTime,
-                            isPinned = false,
-                            isArchieved = false,
-                            color = null,
-                            tags = emptyList()
-                        )
-                    )
-                }
-            }
-        ) {
-            Text("Insert test note")
-        }
-
-        Text("Notes in database: ${notes.size}")
-
-        LazyColumn(
-            verticalArrangement = Arrangement.spacedBy(8.dp)
-        ) {
-            items(
-                items = notes,
-                key = { note -> note.id }
-            ) { note ->
-                Card(modifier = Modifier.fillMaxWidth()) {
-                    Column(modifier = Modifier.padding(12.dp)) {
-                        Text(
-                            text = note.title,
-                            style = MaterialTheme.typography.titleMedium
-                        )
-                        Text(note.content)
-                        Text("Database ID: ${note.id}")
-                    }
-                }
             }
         }
     }
