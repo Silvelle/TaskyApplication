@@ -7,6 +7,8 @@ android {
 }
 
 dependencies {
+    api(project(":core:data"))
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
 }

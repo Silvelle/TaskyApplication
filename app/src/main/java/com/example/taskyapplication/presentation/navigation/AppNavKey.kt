@@ -18,15 +18,7 @@ data object Tasks : AppNavKey
 data object Calendar : AppNavKey
 
 @Serializable
-data object Notes : AppNavKey
-
-@Serializable
 data object Profile : AppNavKey
 
 @Serializable
 data object Habits : AppNavKey
-
-@Serializable
-data class NoteDetail(
-    val noteId: Long?
-) : AppNavKey

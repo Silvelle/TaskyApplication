@@ -24,7 +24,8 @@ android {
 
 dependencies {
     implementation(project(":core:data"))
-    implementation(project(":core:model"))
+    implementation(project(":feature:note:api"))
+    implementation(project(":feature:note:impl"))
 
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.compose.material3)
@@ -32,7 +33,6 @@ dependencies {
     implementation(libs.androidx.compose.ui)
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.androidx.navigation3.runtime)
     implementation(libs.kotlinx.serialization.core)
 

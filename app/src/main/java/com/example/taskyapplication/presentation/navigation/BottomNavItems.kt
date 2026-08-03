@@ -1,16 +1,11 @@
 package com.example.taskyapplication.presentation.navigation
 
-import android.graphics.drawable.Icon
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material.icons.outlined.*
-import androidx.compose.material3.Icon
-import androidx.compose.material3.NavigationBar
-import androidx.compose.material3.NavigationBarItem
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.navigation3.runtime.NavKey
+import com.example.feature.note.api.Notes
 
 data class BottomNavItem(
     val title: String,
@@ -18,7 +13,7 @@ data class BottomNavItem(
     val unselectedIcon: ImageVector
 )
 
-val TOP_LEVEL_DESTINATIONS = mapOf(
+val TOP_LEVEL_DESTINATIONS: Map<NavKey, BottomNavItem> = mapOf(
     Home to BottomNavItem(
         title = "Home",
         selectedIcon = Icons.Filled.Home,

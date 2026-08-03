@@ -9,7 +9,7 @@ android {
 dependencies {
     api(project(":core:model"))
     implementation(project(":core:database"))
-    implementation(libs.kotlinx.coroutines.core)
+    api(libs.kotlinx.coroutines.core)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
