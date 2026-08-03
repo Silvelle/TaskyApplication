@@ -1,7 +1,6 @@
 package com.example.taskyapplication.presentation.notes
 
-import android.nfc.Tag
-import com.example.taskyapplication.domain.model.Note
+import com.example.model.data.Note
 
 data class NotesUiState (
     val notesList: List<Note> = emptyList(),
@@ -11,5 +10,5 @@ data class NotesUiState (
 data class NoteUiState (
     val title: String = "",
     val content: String = "",
-    val tags: List<Tag> = emptyList()
+    val tags: List<String> = emptyList()
 )

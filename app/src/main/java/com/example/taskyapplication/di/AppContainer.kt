@@ -1,9 +1,8 @@
 package com.example.taskyapplication.di
 
 import android.content.Context
-import com.example.taskyapplication.data.local.database.NoteDatabase
-import com.example.taskyapplication.data.repository.NotesRepositoryImpl
-import com.example.taskyapplication.domain.repository.NotesRepository
+import com.example.data.repository.NotesRepository
+import com.example.data.repository.createNotesRepository
 
 interface AppContainer {
     val notesRepository: NotesRepository
@@ -14,8 +13,6 @@ class DefaultAppContainer(
 ) : AppContainer {
 
     override val notesRepository: NotesRepository by lazy {
-        NotesRepositoryImpl(
-            NoteDatabase.getDataBase(context).noteDao()
-        )
+        createNotesRepository(context)
     }
 }

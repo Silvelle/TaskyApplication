@@ -2,11 +2,11 @@ package com.example.taskyapplication.presentation.notes
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.taskyapplication.domain.model.Note
-import com.example.taskyapplication.domain.repository.NotesRepository
+import com.example.data.repository.NotesRepository
+import com.example.model.data.Note
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
@@ -25,7 +25,7 @@ class NotesViewModel (
         viewModelScope.launch {
             notesRepository
                 .observeNotes()
-                .onEach { notes ->
+                .collect { notes ->
                     _uiState.update {
                         it.copy(
                             notesList = notes,
@@ -46,5 +46,4 @@ class NotesViewModel (
         }
     }
 }
-
 

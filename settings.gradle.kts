@@ -1,4 +1,6 @@
 pluginManagement {
+    includeBuild("build-logic")
+
     repositories {
         google {
             content {
@@ -24,4 +26,12 @@ dependencyResolutionManagement {
 
 rootProject.name = "TaskyApplication"
 include(":app")
- 
+include(":mylibrary")
+include(":core:database")
+include(":core:data")
+include(":core:domain")
+include(":core:navigation")
+
+include(":feature:note:api")
+include(":feature:note:impl")
+include(":core:model")
