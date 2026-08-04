@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.tasky.android.library)
+    alias(libs.plugins.tasky.hilt)
 }
 
 android {
@@ -11,4 +12,5 @@ dependencies {
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.kotlinx.coroutines.test)
 }

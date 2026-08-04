@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.tasky.android.application)
     alias(libs.plugins.tasky.android.compose)
     alias(libs.plugins.jetbrains.kotlin.serialization)
+    alias(libs.plugins.tasky.hilt)
 }
 
 android {
