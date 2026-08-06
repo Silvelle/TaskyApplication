@@ -49,7 +49,8 @@ internal class NoteDaoTest : DatabaseTest() {
         val original = testNote(id = 1)
         val updated = original.copy(
             title = "Updated title",
-            content = "Updated content",
+            plainText = "Updated content",
+            contentJson = """{"version":1,"text":"Updated content"}""",
             createdAt = 200,
             updatedAt = 300,
             isPinned = true,
@@ -131,7 +132,8 @@ internal class NoteDaoTest : DatabaseTest() {
 private fun testNote(
     id: Long,
     title: String = "Title $id",
-    content: String = "Content $id",
+    plainText: String = "Content $id",
+    contentJson: String = """{"version":1,"text":"Content $id"}""",
     createdAt: Long = 100,
     updatedAt: Long = createdAt,
     isPinned: Boolean = false,
@@ -141,7 +143,8 @@ private fun testNote(
 ) = NoteEntity(
     id = id,
     title = title,
-    content = content,
+    plainText = plainText,
+    contentJson = contentJson,
     createdAt = createdAt,
     updatedAt = updatedAt,
     isPinned = isPinned,

@@ -3,6 +3,9 @@ package com.example.data.repository
 import com.example.database.dao.NoteDao
 import com.example.database.entity.NoteEntity
 import com.example.model.data.Note
+import com.example.model.data.NoteDocument
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.first
@@ -125,7 +128,7 @@ private fun testNote(
 ) = Note(
     id = id,
     title = "Title $id",
-    content = "Content $id",
+    document = NoteDocument(text = "Content $id"),
     createdAt = 100 + id,
     updatedAt = 200 + id,
     isPinned = false,
@@ -141,7 +144,8 @@ private fun testEntity(
 ) = NoteEntity(
     id = id,
     title = "Title $id",
-    content = "Content $id",
+    plainText = "Content $id",
+    contentJson = Json.encodeToString(NoteDocument(text = "Content $id")),
     createdAt = 100 + id,
     updatedAt = 200 + id,
     isPinned = false,

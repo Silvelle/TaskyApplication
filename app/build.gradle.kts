@@ -27,6 +27,7 @@ dependencies {
     implementation(project(":core:data"))
     implementation(project(":feature:note:api"))
     implementation(project(":feature:note:impl"))
+    implementation(project(":core:navigation"))
 
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.compose.material3)

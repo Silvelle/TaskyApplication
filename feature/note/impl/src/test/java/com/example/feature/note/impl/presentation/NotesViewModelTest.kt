@@ -3,6 +3,7 @@ package com.example.feature.note.impl.presentation
 import com.example.data.repository.NotesRepository
 import com.example.domain.usecase.GetNotesUseCase
 import com.example.model.data.Note
+import com.example.model.data.NoteDocument
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -128,7 +129,7 @@ private class FakeNotesRepository(
 private fun testNote(id: Long) = Note(
     id = id,
     title = "Title $id",
-    content = "Content $id",
+    document = NoteDocument(text = "Content $id"),
     createdAt = 100 + id,
     updatedAt = 200 + id,
     isPinned = false,

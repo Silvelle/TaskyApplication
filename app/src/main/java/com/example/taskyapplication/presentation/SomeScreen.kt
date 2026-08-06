@@ -16,7 +16,7 @@ fun SomeScreen(modifier: Modifier = Modifier) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = "Somethign will be here soon",
+            text = "Something will be here soon",
         )
     }
 }

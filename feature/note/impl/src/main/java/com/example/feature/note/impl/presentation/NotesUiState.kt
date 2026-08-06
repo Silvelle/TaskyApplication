@@ -1,6 +1,7 @@
 package com.example.feature.note.impl.presentation
 
 import com.example.model.data.Note
+import com.example.model.data.NoteDocument
 
 internal data class NotesUiState(
     val notesList: List<Note> = emptyList(),
@@ -9,6 +10,6 @@ internal data class NotesUiState(
 
 internal data class NoteUiState(
     val title: String = "",
-    val content: String = "",
+    val document: NoteDocument = NoteDocument(),
     val tags: List<String> = emptyList(),
 )

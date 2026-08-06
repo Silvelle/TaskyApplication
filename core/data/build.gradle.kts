@@ -8,10 +8,10 @@ android {
 }
 
 dependencies {
-    api(project(":core:model"))
+    implementation(project(":core:model"))
     implementation(project(":core:database"))
     api(libs.kotlinx.coroutines.core)
-
+    implementation(libs.kotlinx.serialization.json)
     testImplementation(libs.junit)
     testImplementation(libs.kotlinx.coroutines.test)
     androidTestImplementation(libs.androidx.junit)

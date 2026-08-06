@@ -1,14 +1,18 @@
 package com.example.data.mapper
 
+import com.example.data.serialization.NoteDocumentJson
 import com.example.database.entity.NoteEntity
 import com.example.model.data.Note
 
 object NoteMapper {
     fun toDomain(entity: NoteEntity): Note {
-        return Note (
+        return Note(
             id = entity.id,
             title = entity.title,
-            content = entity.content,
+            document = NoteDocumentJson.decode(
+                value = entity.contentJson,
+                fallbackText = entity.plainText,
+            ),
             createdAt = entity.createdAt,
             updatedAt = entity.updatedAt,
             isPinned = entity.isPinned,
@@ -22,7 +26,8 @@ object NoteMapper {
         return NoteEntity(
             id = note.id,
             title = note.title,
-            content = note.content,
+            plainText = note.document.text,
+            contentJson = NoteDocumentJson.encode(note.document),
             createdAt = note.createdAt,
             updatedAt = note.updatedAt,
             isPinned = note.isPinned,

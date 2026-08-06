@@ -1,8 +1,12 @@
 package com.example.data
 
 import com.example.data.mapper.NoteMapper
+import com.example.data.serialization.NoteDocumentJson
 import com.example.database.entity.NoteEntity
+import com.example.model.data.InlineStyle
+import com.example.model.data.InlineStyleRange
 import com.example.model.data.Note
+import com.example.model.data.NoteDocument
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
@@ -64,7 +68,7 @@ private fun testNote(
 ) = Note(
     id = id,
     title = "Title $id",
-    content = "Content $id",
+    document = testDocument(id),
     createdAt = 100L,
     updatedAt = 200L,
     isPinned = true,
@@ -80,11 +84,23 @@ private fun testEntity(
 ) = NoteEntity(
     id = id,
     title = "Title $id",
-    content = "Content $id",
+    plainText = testDocument(id).text,
+    contentJson = NoteDocumentJson.encode(testDocument(id)),
     createdAt = 100L,
     updatedAt = 200L,
     isPinned = true,
     isArchieved = false,
     color = color,
     tags = tags,
+)
+
+private fun testDocument(id: Long) = NoteDocument(
+    text = "Content $id",
+    inlineStyles = listOf(
+        InlineStyleRange(
+            start = 0,
+            end = 7,
+            type = InlineStyle.BOLD,
+        ),
+    ),
 )
